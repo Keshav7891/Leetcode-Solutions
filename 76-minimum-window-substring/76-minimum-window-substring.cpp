@@ -21,7 +21,7 @@ public:
             bool f2=false;
             while(i<s.size() && count < target)
             {
-                int ch = s[i];
+                char ch = s[i];
                 source[ch]++;
                 if(pattern[ch]>=source[ch])
                 {
@@ -38,7 +38,7 @@ public:
                 {
                     res=ans;
                 }
-                int ch = s[j];
+                char ch = s[j];
                 source[ch]--;
                 if(pattern[ch]>source[ch])
                 {
