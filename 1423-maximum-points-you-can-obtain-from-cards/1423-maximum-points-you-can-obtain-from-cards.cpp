@@ -14,7 +14,7 @@ public:
         res = max(res,sum);
         while(k!=0)
         {
-            cout<<sum<<"-"<<nums[i]<<'+'<<nums[j]<<endl;
+            //cout<<sum<<"-"<<nums[i]<<'+'<<nums[j]<<endl;
             sum = sum - nums[i];
             sum = sum + nums[j];
             i--;
