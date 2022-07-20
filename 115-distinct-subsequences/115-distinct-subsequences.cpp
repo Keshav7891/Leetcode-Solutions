@@ -1,42 +1,44 @@
 class Solution {
 public:
-    int help(string& source, string& target, int source_index, int target_index, vector<vector<int>>&dp)
+    int help(string &source , string &target , int i , int j , vector<vector<int>>&dp)
     {
-        if(source_index == source.size())
+        if(i==source.size())
         {
-            if(target_index < target.size())
-            {
-                return 0;
-            }
-            else
+            if(j==target.size())
             {
                 return 1;
             }
+            else
+            {
+                return 0;
+            }
         }
-        else if(target_index == target.size())
+        else if(j==target.size())
         {
             return 1;
         }
-        
-        if(dp[source_index][target_index]!=-1) 
+        if(dp[i][j]!=-1)
         {
-            return dp[source_index][target_index];   
+            return dp[i][j];
         }
         
-        if(source[source_index] == target[target_index])  
+        if(source[i]==target[j])
         {
-            int not_pick = help(source,target,source_index+1,target_index,dp);
-            int pick = help(source,target,source_index+1,target_index+1,dp);
-            return dp[source_index][target_index] = pick + not_pick;
+            int pick = help(source,target,i+1,j+1,dp);
+            int not_pick = help(source,target,i+1,j,dp);
+            return dp[i][j] = pick+not_pick;
         }
         else
         {
-            int not_pick = help(source,target,source_index+1,target_index,dp);
-            return dp[source_index][target_index] = not_pick;
+            int not_pick = help(source,target,i+1,j,dp);
+            return dp[i][j] = not_pick;
         }
     }
-    int numDistinct(string s, string t) {
-        vector<vector<int>>dp(s.size(),vector<int>(t.size(),-1));
-        return help(s, t, 0, 0,dp);
+    int numDistinct(string s, string t) 
+    {
+        vector<vector<int>>dp(s.size()+1,vector<int>(t.size()+1,-1));
+        int res = help(s,t,0,0,dp);
+        return res;
+        
     }
 };
