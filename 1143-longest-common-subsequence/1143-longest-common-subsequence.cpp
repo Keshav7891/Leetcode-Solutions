@@ -1,32 +1,32 @@
 class Solution {
 public:
-    int help(string &str1 , string &str2 , int i , int j , vector<vector<int>>&dp)
+    int longestCommonSubsequence(string s1, string s2) 
     {
-        if(i==0 || j==0)
+        vector<vector<int>>dp(s1.size()+1,vector<int>(s2.size()+1));
+        
+        for(int i=0;i<s1.size()+1;i++)
         {
-            return 0;
+            for(int j=0;j<s2.size()+1;j++)
+            {
+                if(i==0 || j==0)
+                {
+                    dp[i][j] = 0;
+                }
+                else
+                {
+                    if(s1[i-1]==s2[j-1])
+                    {
+                        dp[i][j] = 1 + dp[i-1][j-1];
+                    }
+                    else
+                    {
+                        dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
+                    }
+                }
+            }
         }
         
-        if(dp[i][j]!=-1)
-        {
-            return dp[i][j];
-        }
-        
-        if(str1[i-1]==str2[j-1])
-        {
-            return dp[i][j] = 1 + help(str1,str2,i-1,j-1,dp);
-        }
-        else
-        {
-            return dp[i][j] = max(help(str1,str2,i-1,j,dp) , help(str1,str2,i,j-1,dp));
-        }
-    }
-    int longestCommonSubsequence(string text1, string text2) 
-    {
-        
-        vector<vector<int>>dp(text1.size()+1,vector<int>(text2.size()+1,-1));
-        
-        return help(text1,text2,text1.size(),text2.size(),dp);
+        return dp[s1.size()][s2.size()];
         
     }
 };
