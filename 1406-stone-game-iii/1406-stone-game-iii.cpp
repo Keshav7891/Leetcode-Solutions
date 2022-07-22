@@ -6,10 +6,23 @@ public:
         {
             return dp[i];
         }
-        int ans=nums[i]-help(nums,i+1,dp);
-        if(i+1<nums.size()) ans=max(ans,nums[i]+nums[i+1]-help(nums,i+2,dp));
-        if(i+2<nums.size()) ans=max(ans,nums[i]+nums[i+1]+nums[i+2]-help(nums,i+3,dp));
-        return dp[i] = ans;
+        int score = INT_MIN;
+        if(i+0<nums.size())
+        {
+            int op1 = nums[i]-help(nums,i+1,dp);   
+            score = max(score,op1);
+        }
+        if(i+1<nums.size())
+        {
+            int op2 = nums[i]+nums[i+1]-help(nums,i+2,dp);
+            score = max(score,op2);
+        }
+        if(i+2<nums.size())
+        {
+            int op3 = nums[i]+nums[i+1]+nums[i+2]-help(nums,i+3,dp);
+            score = max(score,op3);
+        }
+        return dp[i] = score;
     }
     string stoneGameIII(vector<int>& nums)
     {
