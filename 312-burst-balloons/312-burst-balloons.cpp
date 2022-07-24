@@ -30,7 +30,7 @@ public:
         }
         nums.push_back(1);
         vector<vector<int>>dp(nums.size(),vector<int>(nums.size(),-1));
-        int res = help(nums,1,burst.size(),dp);
+        int res = help(nums,1,nums.size()-2,dp);
         return res;
     }
 };
