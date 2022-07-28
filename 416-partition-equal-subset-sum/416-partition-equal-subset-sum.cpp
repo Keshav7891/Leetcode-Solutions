@@ -43,7 +43,7 @@ public:
             return false;
         }
         int target = sum/2;
-        vector<vector<int>>dp(nums.size()+1,vector<int>(target+1,-1));
+        vector<vector<int>>dp(nums.size(),vector<int>(target+1,-1));
         bool res = help(nums.size()-1,target,nums,dp);
         return res;
     }
