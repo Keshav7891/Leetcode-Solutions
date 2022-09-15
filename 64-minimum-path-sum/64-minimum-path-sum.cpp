@@ -1,40 +1,33 @@
 class Solution {
 public:
+    int help(int row , int col , vector<vector<int>>& grid , vector<vector<int>>&dp)
+    {
+        if(row>=grid.size() || col>=grid[0].size())
+        {
+            return INT_MAX;
+        }
+        
+        if(row==grid.size()-1 && col==grid[0].size()-1)
+        {
+            return grid[row][col];
+        }
+        
+        if(dp[row][col]!=-1)
+        {
+            return dp[row][col];
+        }
+        
+        int right =  help(row,col+1,grid,dp);
+        int down =  help(row+1,col,grid,dp);
+        
+        return dp[row][col] = min(right,down) + grid[row][col];
+        
+    }
     int minPathSum(vector<vector<int>>& grid) {
-        vector<vector<int>>dp(grid.size(),vector<int>(grid[0].size()));
-        for(int i=grid.size()-1;i>=0;i--)
-        {
-            for(int j=grid[0].size()-1;j>=0;j--)
-            {
-                if(i==grid.size()-1 && j==grid[0].size()-1)
-                {
-                    //cout<<"hi"<<endl;
-                    dp[i][j]=grid[i][j];
-                }
-                else if(i==grid.size()-1)
-                {
-                    dp[i][j] = dp[i][j+1] + grid[i][j];
-                }
-                else if(j==grid[0].size()-1)
-                {
-                    dp[i][j] =dp[i+1][j] + grid[i][j];
-                }
-                else
-                {
-                    dp[i][j] = min(dp[i+1][j],dp[i][j+1]) + grid[i][j];
-                }
-            }
-        }
-        
-        for(auto key:dp)
-        {
-            for(auto key1 :key)
-            {
-                cout<<key1<<" ";
-            }
-            cout<<endl;
-        }
-        
-        return dp[0][0];
+        int row = 0;
+        int col = 0;
+        vector<vector<int>>dp(grid.size(),vector<int>(grid[0].size(),-1));
+        int res = help(row,col,grid,dp);
+        return res;
     }
 };
