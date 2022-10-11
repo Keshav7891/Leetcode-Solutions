@@ -16,30 +16,16 @@ public:
             else if(curr > max2 && curr < max1)
             {
                 max2 = curr;
-                
             }
             else if( curr > max3 && curr < max1 && curr < max2)
             {
                 max3 = curr;
             }
-            
             if(max1 != INT_MIN && max2 != INT_MIN && max3 != INT_MIN)
             {
                 return true;
             }
-            
-            //cout<<max1<<" "<<max2<<" "<<max3<<endl;
-            
-            
         }
-        
-        
-        
-        if(max1 == INT_MIN || max2 == INT_MIN || max3 == INT_MIN)
-        {
-            return false;
-        }
-        
-        return true;
+        return false;
     }
 };
