@@ -6,7 +6,6 @@ public:
         int max3 = INT_MIN;
         for(int i=nums.size()-1;i>=0;i--)
         {
-            
             int curr = nums[i];
             if(curr > max1)
             {
