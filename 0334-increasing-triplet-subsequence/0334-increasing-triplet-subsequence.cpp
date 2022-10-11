@@ -10,7 +10,6 @@ public:
             if(curr > max1)
             {
                 max1 = curr;
-                
             }
             else if(curr > max2 && curr < max1)
             {
