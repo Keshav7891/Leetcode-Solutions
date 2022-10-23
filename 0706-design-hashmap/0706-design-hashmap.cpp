@@ -10,20 +10,15 @@ public:
     void put(int key, int value)
     {
         int index = key % size;
-        if(contains(key) == false)
+        for(int i = 0; i < hash[index].size(); i++)
         {
-            hash[index].push_back({key,value});   
-        }
-        else
-        {
-            for(int i = 0; i < hash[index].size(); i++)
+            if(hash[index][i].first == key) 
             {
-                if(hash[index][i].first == key) 
-                {
-                    hash[index][i].second = value;
-                }
+                hash[index][i].second = value;
+                return;
             }
         }
+        hash[index].push_back({key,value});   
     }
     
     int get(int key)
@@ -51,18 +46,7 @@ public:
         }
     }
     
-    bool contains(int key) 
-    {
-        int index = key % size;
-        for(int i = 0; i < hash[index].size(); i++)
-        {
-            if(hash[index][i].first == key) 
-            {
-                return true; 
-            }
-        }
-        return false;
-    }
+    
     
 };
 
