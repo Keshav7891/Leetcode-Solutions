@@ -1,8 +1,8 @@
 class Solution {
 public:
     int largestRectangleArea(vector<int>& nums) {
-         vector<int>ngl;
-        vector<int>ngr;
+        vector<int>nsl;
+        vector<int>nsr;
         int n = nums.size();
         stack<int>s;
         
@@ -13,11 +13,11 @@ public:
             
             if(s.empty()==true)
             {
-                ngl.push_back(-1);
+                nsl.push_back(-1);
             }
             else if(s.empty()==false && nums[s.top()] < curr)
             {
-                ngl.push_back(s.top());
+                nsl.push_back(s.top());
             }
             else if(s.empty()==false && nums[s.top()] >= curr)
             {
@@ -27,11 +27,11 @@ public:
                 }
                 if(s.empty()==false)
                 {
-                    ngl.push_back(s.top());
+                    nsl.push_back(s.top());
                 }
                 else
                 {
-                    ngl.push_back(-1);
+                    nsl.push_back(-1);
                 }
             }
             s.push(index);
@@ -46,11 +46,11 @@ public:
             
             if(s.empty()==true)
             {
-                ngr.push_back(-1);
+                nsr.push_back(-1);
             }
             else if(s.empty()==false && nums[s.top()] < curr)
             {
-                ngr.push_back(s.top());
+                nsr.push_back(s.top());
             }
             else if(s.empty()==false && nums[s.top()] >= curr)
             {
@@ -60,25 +60,25 @@ public:
                 }
                 if(s.empty()==false)
                 {
-                    ngr.push_back(s.top());
+                    nsr.push_back(s.top());
                 }
                 else
                 {
-                    ngr.push_back(-1);
+                    nsr.push_back(-1);
                 }
             }
             s.push(index);
         }
-        reverse(ngr.begin(),ngr.end());
+        reverse(nsr.begin(),nsr.end());
         int res = INT_MIN;
         for(int i=0;i<n;i++)
         {
-            if(ngr[i]==-1)
+            if(nsr[i]==-1)
             {
-                ngr[i] = n;
+                nsr[i] = n;
             }
-            int area = nums[i] * (ngr[i] - ngl[i] - 1);
-            //cout<<nums[i]<<" "<<ngl[i]<<" "<<ngr[i]<<" "<<area<<endl;
+            int area = nums[i] * (nsr[i] - nsl[i] - 1);
+            //cout<<nums[i]<<" "<<nsl[i]<<" "<<nsr[i]<<" "<<area<<endl;
             res = max(res,area);
         
         }
