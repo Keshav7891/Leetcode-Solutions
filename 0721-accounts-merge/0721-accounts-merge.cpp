@@ -6,7 +6,7 @@ class DSU
         DSU(int n)
         {
             parent.resize(n+1);
-            size.resize(n+1,1);
+            size.resize(n+1,0);
             for(int i=0;i<=n;i++)
             {
                 parent[i] = i;
