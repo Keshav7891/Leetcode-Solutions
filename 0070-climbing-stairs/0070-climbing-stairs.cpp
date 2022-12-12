@@ -16,8 +16,9 @@ public:
             return dp[n];
         }
         
+        int op2 = 0;
         int op1 = help(n-1,dp);
-        int op2 = help(n-2,dp);
+        if(n-2 >= 0)    op2 = help(n-2,dp);
         
         return dp[n] = op1 + op2;
     }
