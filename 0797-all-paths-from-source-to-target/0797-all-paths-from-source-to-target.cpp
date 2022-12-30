@@ -21,9 +21,9 @@ public:
         
         visited[node] = false;
         path.pop_back();
-        
     }
-    vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
+    vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) 
+    {
         int node = 0;
         int dest = graph.size()-1;
         unordered_map<int,bool>visited;
