@@ -6,10 +6,6 @@ public:
         {
             return 1;
         }
-        else if(target < 0)
-        {
-            return 0;
-        }
         if(dp[target]!=-1)
         {
             return dp[target];
