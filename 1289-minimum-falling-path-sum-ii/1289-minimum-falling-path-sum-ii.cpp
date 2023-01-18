@@ -8,13 +8,7 @@ public:
         }
         if(dp[index][picked]!=-1)   return dp[index][picked];
         int res = INT_MAX;
-        for(int i=0;i<grid[index].size();i++)
-        {
-            if(i!=picked)
-            {
-               res  = min(res,grid[index][i] + help(index+1,i,grid,dp));
-            }
-        }
+        for(int i=0;i<grid[index].size();i++)   if(i!=picked)   res  = min(res,grid[index][i] + help(index+1,i,grid,dp));
         return dp[index][picked] = res;
     }
     int minFallingPathSum(vector<vector<int>>& grid) {
