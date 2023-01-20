@@ -1,7 +1,7 @@
 class Solution {
 public:
     const int mod = 1e9+7;
-    long long int help(int n,char curr,unordered_map<char,unordered_set<char>>&adj,vector<vector<int>>&dp)
+    long long int help(int n,char curr,vector<vector<int>>&dp)
     {
         if(n==0)
         {
@@ -12,25 +12,40 @@ public:
             return dp[n][curr-'a'];
         }
         long long int res = 0;
-        for(auto key : adj[curr])
+        if(curr == 'a')
         {
-            res = (res + help(n-1,key,adj,dp))%mod;
+            int op1 = help(n-1,'e',dp);
+            res = (res + op1)%mod;
+        }
+        else if(curr == 'e')
+        {
+            int op1 = help(n-1,'a',dp);
+            int op2 = help(n-1,'i',dp);
+            res = (res + op1 + op2)%mod;
+        }
+        else if(curr == 'i')
+        {
+            int op1 = help(n-1,'a',dp);
+            int op2 = help(n-1,'e',dp);
+            int op3 = help(n-1,'o',dp);
+            int op4 = help(n-1,'u',dp);
+            res = (res + op1 + op2 + op3 + op4)%mod;
+        }
+        else if(curr == 'o')
+        {
+            int op1 = help(n-1,'i',dp);
+            int op2 = help(n-1,'u',dp);
+            res = (res + op1 + op2)%mod;
+        }
+        else if(curr == 'u')
+        {
+            int op1 = help(n-1,'a',dp);
+            res = (res + op1)%mod;
         }
         return dp[n][curr-'a'] = res;
     }
     int countVowelPermutation(int n) {
-        unordered_map<char,unordered_set<char>>m;
         vector<vector<int>>dp(n+1,vector<int>(26+1,-1));
-        m['a'].insert('e');
-        m['e'].insert('a');
-        m['e'].insert('i');
-        m['i'].insert('a');
-        m['i'].insert('e');
-        m['i'].insert('o');
-        m['i'].insert('u');
-        m['o'].insert('i');
-        m['o'].insert('u');
-        m['u'].insert('a');
-        return (help(n-1,'a',m,dp) + help(n-1,'e',m,dp) + help(n-1,'i',m,dp) + help(n-1,'o',m,dp) + help(n-1,'u',m,dp))%mod;
+        return (help(n-1,'a',dp) + help(n-1,'e',dp) + help(n-1,'i',dp) + help(n-1,'o',dp) + help(n-1,'u',dp))%mod;
     }
 };
