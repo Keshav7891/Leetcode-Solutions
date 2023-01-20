@@ -20,6 +20,6 @@ public:
     }
     int checkRecord(int n) {
         vector<vector<vector<int>>>dp(n+1,vector<vector<int>>(2+1,vector<int>(3+1,-1)));
-        return help(n,0,0,dp);
+        return help(n,0,0,dp) % mod;
     }
 };
