@@ -14,8 +14,15 @@ public:
         {
             return dp[k][i][j];
         }
-        double possibilities;
-        possibilities = help(k-1,i-2,j+1,row,col,dp) + help(k-1,i-1,j+2,row,col,dp) + help(k-1,i+1,j+2,row,col,dp) + help(k-1,i+2,j+1,row,col,dp) + help(k-1,i+2,j-1,row,col,dp) + help(k-1,i+1,j-2,row,col,dp) + help(k-1,i-1,j-2,row,col,dp) + help(k-1,i-2,j-1,row,col,dp);
+        double possibilities = 0;
+        possibilities = possibilities + help(k-1,i-2,j+1,row,col,dp);
+        possibilities = possibilities + help(k-1,i-1,j+2,row,col,dp);
+        possibilities = possibilities + help(k-1,i+1,j+2,row,col,dp);
+        possibilities = possibilities + help(k-1,i+2,j+1,row,col,dp);
+        possibilities = possibilities + help(k-1,i+2,j-1,row,col,dp);
+        possibilities = possibilities + help(k-1,i+1,j-2,row,col,dp);
+        possibilities = possibilities + help(k-1,i-1,j-2,row,col,dp);
+        possibilities = possibilities + help(k-1,i-2,j-1,row,col,dp);
         double probablity = possibilities/8;
         return dp[k][i][j] = probablity;
     }
