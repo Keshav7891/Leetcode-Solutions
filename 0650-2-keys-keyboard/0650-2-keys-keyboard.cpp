@@ -4,7 +4,7 @@ public:
     {
         if(len == target)
         {
-            return 1;
+            return 0;
         }
         else if(len > target)
         {
@@ -22,7 +22,7 @@ public:
         {
             return 0;
         }
-        return help(1,1,n);
+        return 1 + help(1,1,n);
         
     }
 };
