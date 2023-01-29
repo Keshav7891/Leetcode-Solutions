@@ -8,7 +8,7 @@ public:
         }
         else if(len > target)
         {
-            return INT_MAX/2;
+            return 1001;
         }
         
         int copy_paste = 2 + help(len + len , len , target);
@@ -18,6 +18,7 @@ public:
     }
     int minSteps(int n) 
     {
+        vector<vector<int>>dp;
         if(n==0 || n==1)
         {
             return 0;
