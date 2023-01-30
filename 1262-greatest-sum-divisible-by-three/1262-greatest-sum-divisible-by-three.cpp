@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int help(int index , int rem , vector<int>&nums , vector<vector<int>>&dp)
+    {
+        if(index == nums.size())
+        {
+            if(rem % 3 == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return -10000;
+            }
+        }
+        
+        if(dp[index][rem]!=-1)
+        {
+            return dp[index][rem];
+        }
+        
+        int r = (rem+nums[index])%3;
+        
+        int op1 = nums[index] + help(index + 1,r,nums,dp);
+        int op2 = 0 + help(index + 1,rem,nums,dp);
+        
+        return dp[index][rem] = max(op1,op2);
+    }
+    int maxSumDivThree(vector<int>& nums) {
+        vector<vector<int>>dp(nums.size()+1,vector<int>(3,-1));
+        return help(0,0,nums,dp);
+    }
+};
