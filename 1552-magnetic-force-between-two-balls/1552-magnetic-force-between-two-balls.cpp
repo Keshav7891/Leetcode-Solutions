@@ -11,9 +11,10 @@ public:
                 balls--;
                 flag = true;
                 prev_placed = nums[i];
+                if(balls == 0)  return true;
             }
         }
-        return balls <= 0;
+        return false;
     }
     int maxDistance(vector<int>& nums, int m) {
         sort(nums.begin(),nums.end());
