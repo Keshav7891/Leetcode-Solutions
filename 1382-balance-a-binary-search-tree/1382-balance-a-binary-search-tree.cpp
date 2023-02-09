@@ -39,6 +39,7 @@ public:
     TreeNode* balanceBST(TreeNode* root) {
         vector<int>nums;
         help1(root,nums);
+        sort(nums.begin(),nums.end());
         TreeNode* res = help(0,nums.size()-1,nums);
         return res;
     }
