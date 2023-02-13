@@ -23,6 +23,7 @@ public:
             return ;
         }
         help(root->left);
+        //cout<<root->val<<" ";
         if(prev == NULL) 
         {
             prev = root;
@@ -54,6 +55,7 @@ public:
         }
         else if(v1 != NULL && v2 != NULL && v3 != NULL)
         {
+            //cout<<"yo"<<endl;
             swap(v1->val,v3->val);
         }
     }
