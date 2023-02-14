@@ -28,7 +28,7 @@ public:
             }
             else
             {
-                prev = prev->next;
+                prev = curr;
             }
             curr = curr->next;
         }
