@@ -10,7 +10,7 @@ class Solution {
         int maxc = matrix[0].length-1;
         int c = 0;
         
-        while(minr <= maxr && minc <= maxc){
+        while(c < total){
             
             
             for(int i=minc;i<=maxc && c< total;i++){
