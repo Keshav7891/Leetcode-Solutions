@@ -14,13 +14,10 @@ public:
             temp[i] = max(temp[i],temp[i-1]);
         }
         vector<long long>res;
-        for(int i=0;i<nums.size();i++){
-            if(i==0){
-                res.push_back(nums[i] + temp[i]);   
-            }
-            else{
-                res.push_back(nums[i] + temp[i] + res[i-1]);   
-            }
+        res.push_back(temp[0] + nums[0]);
+        for(int i=1;i<nums.size();i++){
+            
+            res.push_back(nums[i] + temp[i] + res[i-1]);   
         }
         return res;
     }
