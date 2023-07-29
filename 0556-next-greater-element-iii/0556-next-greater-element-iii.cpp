@@ -31,10 +31,10 @@ public:
         }
         swap(nums[pivotIndex],nums[currIndex]);
         sort(nums.begin()+pivotIndex+1,nums.end());
-        res = std::stoll(nums);
+        res = stoll(nums);
         if (res > INT_MAX) {
             return -1;
         }
-        return static_cast<int>(res);
+        return res;
     }
 };
