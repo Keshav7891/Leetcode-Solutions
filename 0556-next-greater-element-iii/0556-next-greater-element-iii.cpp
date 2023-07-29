@@ -35,6 +35,6 @@ public:
         if (res > INT_MAX) {
             return -1;
         }
-        return res;
+        return static_cast<int>(res);
     }
 };
