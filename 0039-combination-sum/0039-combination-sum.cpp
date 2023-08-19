@@ -1,29 +1,28 @@
 class Solution {
 public:
     vector<vector<int>>res;
-    void help(int index , int &pathSum , vector<int>&path , vector<int>&nums , int target)
-    {
-        if(pathSum > target)    return;
-        if(index == nums.size())
-        {
-            if(pathSum == target)
-            {
+    void help(int index , int target , vector<int>&nums , vector<int>&path){
+        if(index == nums.size()){
+            if(target==0){
                 res.push_back(path);
+                return;
             }
-            return;
+            else{
+                return;
+            }
         }
         
-        path.push_back(nums[index]);
-        pathSum = pathSum + nums[index];
-        help(index,pathSum,path,nums,target);
-        path.pop_back();
-        pathSum = pathSum - nums[index];
-        help(index+1,pathSum,path,nums,target);
+        if(target-nums[index]>=0){
+            path.push_back(nums[index]);
+            help(index,target-nums[index],nums,path);
+            path.pop_back();
+        }
+        
+        help(index+1,target-0,nums,path);
     }
     vector<vector<int>> combinationSum(vector<int>& nums, int target) {
         vector<int>path;
-        int pathSum = 0;
-        help(0,pathSum,path,nums,target);
+        help(0,target,nums,path);
         return res;
     }
 };
