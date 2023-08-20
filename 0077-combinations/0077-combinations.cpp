@@ -7,9 +7,9 @@ public:
             res.push_back(path);
             return;
         }
-        if(index > n){
-            return;
-        }
+        // if(index > n){
+        //     return;
+        // }
         
         for(int i=index;i<=n;i++){
             path.push_back(i);
