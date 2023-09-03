@@ -18,7 +18,7 @@ public:
         int n = matrix.size();
         int low = matrix[0][0];
         int high = matrix[n - 1][n - 1];
-        while (low < high) { // Use '<' instead of '<=' to avoid an extra iteration
+        while (low != high) { // Use '<' instead of '<=' to avoid an extra iteration
             int mid = low + (high - low) / 2;
             int count = 0;
             for (int i = 0; i < n; i++) {
