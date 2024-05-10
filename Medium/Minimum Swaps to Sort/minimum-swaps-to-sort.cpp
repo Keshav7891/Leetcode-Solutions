@@ -24,17 +24,18 @@ class Solution
 
         for (int i = 0; i < nums.size(); i++) {
             if (nums[i] != temp[i]) {
-                int correctLocation = m[temp[i]]; // Get the correct location
-                swap(nums[i], nums[correctLocation]); // Swap elements
-                m[nums[i]] = i; // Update map for the swapped elements
-                m[nums[correctLocation]] = correctLocation; // Update map for the swapped elements
-                swaps++; // Increment swap count
+                int correctLocation = m[temp[i]];
+                swap(nums[i], nums[correctLocation]); 
+                m[nums[i]] = i; 
+                m[nums[correctLocation]] = correctLocation; 
+                swaps++; 
             }
         }
 
         return swaps;
     }
 };
+
 
 //{ Driver Code Starts.
 int main(){
